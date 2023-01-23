@@ -22,9 +22,11 @@ To setup this repository, simply download the files top your local machine and u
 
 The images below show examples of the quiz and highscores being saved:
 
-![Intended landing page screenshot](https://github.com/ibanezlewis/password-generator/blob/main/generatedPasswordExample.png)
+![Example of the quiz](https://github.com/ibanezlewis/js-code-quiz/blob/main/quiz-example.png)
 
-You can [view the landing page here](https://ibanezlewis.github.io/password-generator/).
+![Example of highscores being saved](https://github.com/ibanezlewis/js-code-quiz/blob/main/highscores-example.png)
+
+You can [view the landing page here](https://ibanezlewis.github.io/js-code-quiz/).
 
 ## Credits
 
