@@ -1,3 +1,4 @@
+//defines the questions and answers
 let questions = [
     {
         "title": "Common Data Types DO NOT include:",

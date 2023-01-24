@@ -1,4 +1,4 @@
-// variable to keep track of quiz state
+// variables to keep track of quiz state
 let currentQuestionIndex = 0;
 let time = questions.length * 15;
 let timerID;
@@ -12,9 +12,11 @@ let startButton = document.getElementById("start");
 let initialElement = document.getElementById("initials");
 let feedBackElement = document.getElementById("feedback");
 
-//sfx
+//determines the sfx for right and wrong answers
 let sfxRight = new Audio("assets/sfx/correct.wav");
+let sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
+//this function determines what happens if an answer is right or wrong
 function questionClick() {
     if(this.value !== questions[currentQuestionIndex].answer) {
         time -= 15;
@@ -24,7 +26,7 @@ function questionClick() {
     }
 
     timerElement.textContent = time;
-
+    sfxWrong.play();
     feedBackElement.textContent = "Wrong"
     } else {
         sfxRight.play();
@@ -39,6 +41,8 @@ function questionClick() {
 
     currentQuestionIndex++;
 
+//this checks whether the quiz has ended by checking if there are any questions left, or ending the quiz
+
     if(currentQuestionIndex === questions.length) {
         quizEnd()
     } else {
@@ -46,6 +50,7 @@ function questionClick() {
     }
 }
 
+//this function gets the next question from the questions.js file
 function getQuestion() {
     let currentQuestion = questions[currentQuestionIndex];
 
@@ -69,6 +74,7 @@ function getQuestion() {
     })
 }
 
+//this function determines what happens when the quiz ends - it shows the end screen
 function quizEnd() {
     clearInterval(timerID);
 
@@ -81,6 +87,7 @@ function quizEnd() {
     questionsElement.setAttribute("class", "hide");
 }
 
+//this function controls the countdown timer
 function clockTick() {
     time--;
     timerElement.textContent = time;
@@ -90,6 +97,7 @@ function clockTick() {
     }
 }
 
+//this function will start the quiz onClick of the begin quiz button and fetch the first question
 function startQuiz() {
     let startScreenElement = document.getElementById("start-screen");
     startScreenElement.setAttribute("class", "hide");
@@ -103,10 +111,12 @@ function startQuiz() {
     getQuestion();
 }
 
+//this function saves the highscore to local storage
 function saveHighScore() {
     let initials = initialElement.value.trim();
     console.log(initials);
 
+    //sets the initials and the highscore
     if(initials !== ""){
         let highScores = JSON.parse(localStorage.getItem("highscores")) || [];
         let newScore = {
@@ -121,6 +131,7 @@ function saveHighScore() {
     }
 }
 
+//this function checks for someone submitting the high score
 function checkForEnter(event){
     if(event.key === "Enter") {
         saveHighScore();

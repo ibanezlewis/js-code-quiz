@@ -1,3 +1,4 @@
+//this function will print the highscore to localstorage
 function printHighScores(){
     let highScores = JSON.parse(localStorage.getItem("highscores")) || [];
 
@@ -14,6 +15,7 @@ function printHighScores(){
     })
 }
 
+//this function clears the highscore
 function clearHighScores(){
     localStorage.removeItem("highscores");
     window.location.reload();
